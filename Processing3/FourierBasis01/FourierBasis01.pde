@@ -16,13 +16,14 @@ void draw()
 {
   clear();
   for ( int i = 0; i < N; i++ ) {
-    float r = rDiff / N * ( i + 1 );
-    w = -1.0 / N * ( i + 1 );
-    circle( ( r + rMin ) * cos( w * t ) + width/2, ( r + rMin ) * sin( w * t ) + height/2, 10 );  
+    w = float( i + 1 ) / N;
+    float r = w * rDiff + rMin;
+    w *= -1.0;
+    circle( r * cos( w * t ) + width/2, r * sin( w * t ) + height/2, 10 );  
   }
   t += dt;
 
-  //saveFrame("FourierBasis01.####.tif");
-  
-  //if ( t > 500 ) exit();
+  saveFrame("FourierBasis01.####.png");
+
+  if ( t > 600 ) exit();
 }
